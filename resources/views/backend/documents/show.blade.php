@@ -131,23 +131,25 @@
                                     @endif
                                 </div>
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Disposisi</div>
-                                <div class="col-lg-9 col-md-8">
-                                    @if ($doc->disposisi_set == 0)
-                                        <h5><span class="badge bg-primary">Tidak Perlu Disposisi dari Kepala
-                                                Departemen</span></h5>
-                                    @elseif ($doc->disposisi_set == 1)
-                                        <h5><span class="badge bg-danger">Kepala Departemen Belum Memberikan
-                                                Disposisi</span></h5>
-                                    @elseif ($doc->disposisi_set == 2)
-                                        <h5><span class="badge bg-success">Kepala Departemen Telah Memberikan
-                                                Disposisi</span></h5>
-                                        <div style="text-align: justify">{{ $doc->disposisi }}</div>
-                                    @endif
+                            @if ($doc->type == 'masuk')
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Disposisi</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        @if ($doc->disposisi_set == 0)
+                                            <h5><span class="badge bg-primary">Tidak Perlu Disposisi dari Kepala
+                                                    Departemen</span></h5>
+                                        @elseif ($doc->disposisi_set == 1)
+                                            <h5><span class="badge bg-danger">Kepala Departemen Belum Memberikan
+                                                    Disposisi</span></h5>
+                                        @elseif ($doc->disposisi_set == 2)
+                                            <h5><span class="badge bg-success">Kepala Departemen Telah Memberikan
+                                                    Disposisi</span></h5>
+                                            <div style="text-align: justify">{{ $doc->disposisi }}</div>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <hr>
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Keterangan Tambahan</div>

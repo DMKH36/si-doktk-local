@@ -203,27 +203,32 @@
                             </div>
                         </div>
 
-                        <fieldset class="row mt-3">
-                            <legend class="col-2 col-form-label pt-0">Butuh Disposisi Kadep <span
-                                    class="text-danger">*</span>
-                            </legend>
-                            <div class="col-10">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="disposisi_set" id="status1"
-                                        value="1" {{ old('disposisi_set') == 1 ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="status1">
-                                        Perlu Disposisi Kepala Departemen
-                                    </label>
+                        <div id="setting-disposisi">
+                            <fieldset class="row mt-3">
+                                <legend class="col-2 col-form-label pt-0">Butuh Disposisi Kadep <span
+                                        class="text-danger">*</span>
+                                </legend>
+                                <div class="col-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="disposisi_set"
+                                            id="status1" value="1"
+                                            {{ old('disposisi_set') == 1 ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status1">
+                                            Perlu Disposisi Kepala Departemen
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="disposisi_set"
+                                            id="status2" value="0"
+                                            {{ old('disposisi_set') == 0 ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status2">
+                                            Tidak Perlu Disposisi Kepala Departemen
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="disposisi_set" id="status2"
-                                        value="0" {{ old('disposisi_set') == 0 ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="status2">
-                                        Tidak Perlu Disposisi Kepala Departemen
-                                    </label>
-                                </div>
-                            </div>
-                        </fieldset>
+                            </fieldset>
+                        </div>
+
                         <div class="row mt-3">
                             <label for="description" class="col-2 col-form-label pt-0">Keterangan Tambahan
                                 (Opsional)</label>
@@ -247,16 +252,19 @@
 @endsection
 @section('script')
     <script>
-        // Show Hide Tanggal Terima
+        // Show Hide Tanggal Terima dan Setting Disposisi
         $(document).ready(function() {
             $("#type").change(function() {
                 var type = $(this).val();
-                var element = document.getElementById('surat_masuk')
+                var tanggalterima = document.getElementById('surat_masuk')
+                var setdisposisi = document.getElementById('setting-disposisi')
                 if (type == "masuk") {
-                    element.style.display = 'block'
+                    tanggalterima.style.display = 'block';
+                    setdisposisi.style.display = 'block';
                     // $("#surat_masuk").show();
                 } else {
-                    element.style.display = 'none'
+                    tanggalterima.style.display = 'none'
+                    setdisposisi.style.display = 'none';
                     // $("#surat_masuk").hide();
                 }
             });
